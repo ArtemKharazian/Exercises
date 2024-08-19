@@ -46,5 +46,54 @@ for (let i = 0; i < 8; i++) {
 
 console.log(chess)
 
+//aufgabe Minimum
 
+function min(a, b) {
+    return Math.min(a, b);
+}
+
+console.log(min(10, 5));
+
+
+//aufgabe Recursion
+
+function isEvent(n) {
+    if (n === 0) {
+      return "Ваше число чётное";
+    } else if (n === 1) {
+      return "Ваше число нечётное";
+    } else {
+      return isEvent (n - 2);
+    }
+    
+  }
+  
+  console.log(isEvent(10));
+
+  // aufgabe Counting beans
+
+  function countBs(string) {
+    let count = 0;
+  
+    for (let i = 0; i < string.length; i++) {
+      if (string.charAt(i) === "B") {
+        count++;
+      } 
+    }
+    return count;
+  }
+  
+  function countChar(string, char) {
+    let count = 0;
+  
+    for (let i = 0; i < string.length; i++) {
+      if (string.charAt(i) === char) {
+        count++;
+      } 
+    }
+    return count;
+  }
+  
+  console.log(countBs("Barbeque"));
+  console.log(countChar("spectrum", "s"));
 
