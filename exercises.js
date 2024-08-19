@@ -46,26 +46,5 @@ for (let i = 0; i < 8; i++) {
 
 console.log(chess)
 
-// aufgabe mit Math.min 
 
-function min(a, b) {
-    return Math.min(a, b);
-}
-
-console.log(min(5, 7));
-
-// aufgabe mit recursion
-
-function isEvent(n) {
-    if (n === 0) {
-      return "Ваше число чётное";
-    } else if (n === 1) {
-      return "Ваше число нечётное";
-    } else {
-      return isEvent (n - 2);
-    }
-    
-  }
-  
-  console.log(isEvent(10));
 
