@@ -263,6 +263,304 @@ ancestry.forEach(function(person) {
 let averageAgeDifference = average(ageDifferences);
 console.log(averageAgeDifference);
 
+/* Aufgabe: "Lucky" is a ticket with a number in which the sum of the first half of the digits is equal 
+to the sum of the second half of the digits. The numbers can be of any length, with the only condition 
+that the number of digits is always even, for example: 33or 2341and so on.
+
+Ticket number 385916 is lucky because 3 + 8 + 5 === 9 + 1 + 6. Ticket number 231002 is not lucky because 2 + 3 + 1 !== 0 + 0 + 2.
+
+Implement and export by default a function that checks whether the number is lucky (the number is always a string).
+ The function should return trueif the ticket is lucky, or falseif not.*/
+
+let someNumber = ((Math.floor(Math.random() * 1000000) + 1).toString());
+
+
+function isHappyNumber (someNumber) {
+  
+	if (someNumber.length % 2 === 0) {
+  	
+    let firstPart = someNumber.slice(0, someNumber.length / 2).split("");
+    let secondPart = someNumber.slice (someNumber.length / 2).split("");
+    
+    let readyFirstPart = firstPart.reduce((total, currentNumber) => total + Number(currentNumber), 0);
+    let readySecondPart = secondPart.reduce((total, currentNumber) => total + Number(currentNumber), 0);
+    
+    if (readyFirstPart == readySecondPart) {
+    	return "Your Number is Happy Number"
+    } else return "Sorry, but u lost" 
+    
+  } else return "Try again!"
+}
+
+console.log(isHappyNumber(someNumber));
+
+
+/*Aufgabe: Implement and export by default a function that reverses the case of each letter in a string.
+ The function should return the result it received.
+
+Examples:
+
+invertCase('Hello, World!'); // hELLO, wORLD!
+invertCase('I loVe JS');     // i LOvE js*/
+
+function changePosition (text) {
+
+  let newText = [];
+    
+    for (let i = 0; i < text.length; i++) {
+    
+      if (text[i] === text[i].toUpperCase()) {
+        newText.push(text[i].toLowerCase());
+        
+      } else newText.push(text[i].toUpperCase());
+    }
+    return newText.reduce((total, currentLetter) => total + currentLetter, "")
+  }
+  
+  console.log(changePosition("hElLo"));
+
+/*Aufgabe: Lucky numbers
+Let's call lucky numbers those that, as a result of a series of transformations of the type "sum of squares of digits",
+ turn into one. For example, for the number 7, the chain of transformations will look like this:
+
+7   => 7^2 = 49,
+49  => 4^2 + 9^2 = 16 + 81 = 97,
+97  => 9^2 + 7^2 = 81 + 49 = 130,
+130 => 1^2 + 3^2 + 0^2 = 10,
+10  => 1^2 + 0^2 = 1.
+
+Conclusion: the original number 7 is lucky.*/ 
+
+const someNumber = Math.floor(Math.random() * 100)
+
+function isHappyNumber (someNumber, count = 1) {
+	const someNumberArray = [];
+	const someNumberString = someNumber.toString();
+  
+  for (let i = 0; i < someNumberString.length; i++) {
+  	someNumberArray.push(someNumberString[i]);
+  }
+  
+  
+  const newNumber = someNumberArray.reduce((accumulator, currentValue) => accumulator + (currentValue ** 2), 0);
+  
+  console.log(someNumberArray, someNumberString, newNumber);
+  
+  if (newNumber === 1) {
+  	return true;
+  } else if (count === 10) {
+  	return false
+  }
+  return isHappyNumber(newNumber, count + 1);
+}
+
+console.log(isHappyNumber(someNumber));
+
+
+/*write a function that sorts an array of strings based on the number of vowels they contain */
+
+function sortByVowel(list) {
+  var sorted = [];
+
+  list.forEach(str => {
+    sorted.push({ word: str, count: countVowels(str) });
+  });
+
+  sorted.sort((a, b) => a.count - b.count);
+
+  sorted = sorted.map(item => item.word);
+
+  return sorted;
+
+  function countVowels(str) {
+    let vowels = "aeiouyAEIOUY";
+    let count = 0;
+    for (let char of str) {
+      if (vowels.includes(char)) {
+        count++;
+      }
+    }
+    return count;
+  }
+}
+
+console.log(sortByVowel(['Alice', 'Bob', 'Mallory']));
+
+
+/* Create a zoo management system using classes and inheritance in JavaScript.
+
+Animal class: - 
+
+Has the properties name and species.
+Has the speak() method, which prints a message about the animal.
+
+Zoo class: - 
+
+Has a static property animals (an array of all animals in the zoo).
+Has a static method addAnimal(animal), which adds an animal to the zoo.
+Has a static method listAnimals(), which prints a list of all animals.
+
+Subclasses Lion, Elephant, Monkey: - 
+
+Inherit from Animal.
+Override the speak() method to print a unique sound for each species.
+Task:
+Create multiple animal instances.
+Add them to the zoo using the addAnimal method.
+Print a list of all animals in the zoo.
+Call the speak method for each animal.
+
+Expected output:
+The classes and methods you create should allow you to add and manage animals to the zoo using object-oriented principles. */
+
+class Animal {
+	constructor(name, species) {
+  	this.name = name;
+    this.species = species;
+  }
+  
+  speak() {
+  	console.log(`${this.name} makes a sound.`);
+  }
+}
+
+class Zoo {
+
+	static animals = [];
+  
+  static addAnimal(animal) {
+  	Zoo.animals.push(animal);
+  }
+  
+  static listAnimals() {
+  	Zoo.animals.forEach(animal => console.log(`${animal.name} (${animal.species})`));
+  }
+}
+
+class Lion extends Animal {
+	speak() {
+  	console.log(`${this.name} makes a sound: Rrrrr..`)
+  }
+}
+
+class Elephant extends Animal {
+	speak() {
+  	console.log(`${this.name} makes a sound: Uuuuuu..`)
+  }
+}
+
+class Monkey extends Animal {
+	speak() {
+  	console.log(`${this.name} makes a sound: UaUaUaUa..`)
+  }
+}
+
+const simba = new Lion("Simba", "Lion");
+const donk = new Elephant("Donk", "Elephant");
+const chezahr = new Monkey("Chezahr", "Monkey");
+
+Zoo.addAnimal(simba);
+Zoo.addAnimal(donk);
+Zoo.addAnimal(chezahr);
+
+Zoo.listAnimals();
+
+Zoo.animals.forEach(animal => animal.speak());
+
+/* Create a school management system using classes and inheritance.
+
+Person class: - 
+
+Properties: name, age.
+Introduce() method that outputs: "Hello, my name is [name], I'm [age] years old."
+
+Student class (inherits from Person): - 
+
+Additional properties: grade (the class the student is in).
+Override introduce() method to output: "Hello, my name is [name], I'm [age] years old, and I'm in class [grade]."
+
+Teacher class (inherits from Person): - 
+
+Additional properties: subject (the subject the teacher teaches).
+Override introduce() method to output: "Hello, my name is [name], I teach [subject]."
+
+School class: - 
+
+Static property people (an array of all the people in the school: students and teachers).
+Static method addPerson(person), which adds a person to the school.
+A static method listPeople() that lists all the people in the school with their intro.
+
+Tasks: - 
+
+Create some students and teachers.
+Add them to the school.
+List all the people in the school using the listPeople() method.
+
+Expected results:
+Classes should allow you to manage the school by adding and displaying information about students and teachers. */
+
+class Person {
+	constructor(name, age) {
+  	this.name = name;
+    this.age = age;
+  }
+  
+  introduce() {
+  	console.log(`Hello, my name is ${this.name} and i'm ${this.age} `);
+  }
+}
+
+class Student extends Person {
+	constructor (name, age, grade) {
+  	super(name, age);
+  	this.grade = grade;
+  }
+  
+  introduce() {
+  	console.log(`Hello, my name is ${this.name} and i'm ${this.age} and i'm in the ${this.grade}th grade.`);
+  }
+}
+
+class Teacher extends Person {
+	constructor(name, age, subject) {
+  	super(name, age);
+  	this.subject = subject;
+  }
+  
+  introduce() {
+  	console.log(`Hello, my name is ${this.name} and i study ${this.subject} `);
+  }
+}
+
+class School {
+	static people = [];
+  
+  static addPerson(person) {
+  School.people.push(person);
+  }
+  
+  static listPeople() {
+  	School.people.forEach(person => person.introduce());
+  }
+}
+
+const artem = new Student("Artem", "19", "12");
+const marta = new Student("Marta", "20", "13");
+const justin = new Student("Justin", "20", "13");
+const diana = new Student("Diana", "19", "12");
+
+const alex = new Teacher("Alex", "35", "Informatik");
+
+School.addPerson(artem);
+School.addPerson(marta);
+School.addPerson(justin);
+School.addPerson(diana);
+School.addPerson(alex);
+
+School.listPeople(person => person.introduce());
+
+
+
 
   
 
