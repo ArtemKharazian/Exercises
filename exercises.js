@@ -560,6 +560,181 @@ School.addPerson(alex);
 School.listPeople(person => person.introduce());
 
 
+// Aufgabe Vector type
+
+function Vector (x, y) {
+	this.x = x;
+  this.y = y;
+}
+
+Vector.prototype.plus = function (otherVector) {
+  	return new Vector(this.x + otherVector.x, this.y + otherVector.y);    
+  }
+  
+  Vector.prototype.minus = function (otherVector) {
+  	return new Vector(this.x - otherVector.x, this.y - otherVector.y);
+  }
+  
+  Object.defineProperty(Vector.prototype, "length", {
+  	get: function() {
+    	return Math.sqrt(this.x ** 2 + this.y ** 2);
+    }
+  })
+
+console.log(new Vector(1, 2).plus(new Vector(2, 3)));
+console.log(new Vector(3, 4).length);
+
+// Aufgabe Another cell
+
+// Aufgabe Interface to sequences
+
+
+
+
+let Car = {
+  color: "red",
+  speed: 300
+
+  get getter() {
+    // getter, the code executed when reading obj.prop
+    return color;
+  },
+
+  set setter(newColor){
+    this.color = newColor
+    this.speed *= 2;
+  }
+}
+
+Car.color = "green"
+
+Car.setter("green")
+
+
+// Aufgabe Artificial idiot
+
+PlantEater.prototype.act = function(context) {
+  var plantDirections = context.findAll("*");
+
+  if (plantDirections.length > 0 && this.energy < 60) {
+      var direction = plantDirections[0];
+      return { type: "eat", direction: direction };
+  }
+
+  var space = context.find(" ");
+  if (this.energy > 60 && this.energy < 80 && space) {
+      return { type: "move", direction: space };
+  } 
+
+  if (this.energy > 80) {
+      return { type: "rest" };
+  }
+  
+  if (this.energy > 100) {
+    this.energy = this.energy / 2;
+    return {type: "reproduce", direction: space};
+  }
+
+  if (space) {
+      return { type: "move", direction: space };
+  }
+};
+
+// Aufgabe Predators
+
+function Tiger(energy) {
+  PlantEater.call(this, energy);
+}
+
+Tiger.prototype = Object.create(PlantEater.prototype);
+Tiger.prototype.constructor = Tiger;
+
+Tiger.prototype.act = function(context) {
+  var tigerDirections = context.findAll("O");
+
+  if (tigerDirections.length > 0) {
+      var direction = tigerDirections[0];
+      this.energy += 30;
+      return { type: "eat", direction: direction };
+  }
+  
+  var space = context.find(" ");
+  if (space) {
+      return { type: "move", direction: space };
+  } 
+  
+  if (this.energy > 150) {
+      this.energy = this.energy / 2;
+      return { type: "reproduce", direction: space };
+  } 
+};
+
+// Aufgabe Repeat
+
+function MultiplicatorUnitFailure() {}
+
+function primitiveMultiply(a, b) {
+  if (Math.random() < 0.5)
+    return a * b;
+  else
+    throw new MultiplicatorUnitFailure();
+}
+
+function reliableMultiply(a, b) {
+  for (;;) {
+    try {
+      return primitiveMultiply(a, b)
+      } catch (e) {
+      if (!(e instanceof MultiplicatorUnitFailure)) {
+      throw e}
+    }
+  }
+}
+
+console.log(reliableMultiply(8, 8));
+
+// Aufgabe Locked box
+
+var box = {
+  locked: true,
+  unlock: function() { this.locked = false; },
+  lock: function() { this.locked = true;  },
+  _content: [],
+  get content() {
+    if (this.locked) throw new Error("Locked!");
+    return this._content;
+  }
+};
+
+function withBoxUnlocked(body) {
+  const initiallyLocked = box.locked;
+  try {
+    if (initiallyLocked) {
+      box.unlock();
+    }
+    body();
+  } finally {
+    if (initiallyLocked) {
+      box.lock();
+    }
+  }
+}
+
+
+withBoxUnlocked(function() {
+  box.content.push("Gold");
+});
+
+try {
+  withBoxUnlocked(function() {
+    throw new Error("Pirates on the horizon! Cancel !");
+  });
+} catch (e) {
+  console.log("Error:", e.message);
+}
+console.log(box.locked);
+
+
 
 
   
