@@ -734,7 +734,71 @@ try {
 }
 console.log(box.locked);
 
+//Aufgabe Regular Golf
 
+verify(/ca[rt]/,
+  ["my car", "bad cats"],
+  ["camper", "high art"]);
+
+verify(/pr?op/,
+  ["pop culture", "mad props"],
+  ["plop"]);
+
+verify(/ferr(et|y|ari)/,
+  ["ferret", "ferry", "ferrari"],
+  ["ferrum", "transfer A"]);
+
+verify(/\b\w+ious\b/,
+  ["how delicious", "spacious room"],
+  ["ruinous", "consciousness"]);
+
+verify(/\s[.,:;]/,
+  ["bad punctuation ."],
+  ["escape the dot"]);
+
+verify(/\b\w{7,}\b/,
+  ["hottentottententen"],
+  ["no", "hotten totten tenten"]);
+
+verify(/\b[^e\s]+\b/,
+  ["red platypus", "wobbling nest"],
+  ["earth bed", "learning ape"]);
+
+function verify(regexp, yes, no) {
+if (regexp.source == "...") return;
+yes.forEach(function(s) {
+if (!regexp.test(s))
+ console.log("Not found '" + s + "'");
+});
+no.forEach(function(s) {
+if (regexp.test(s))
+ console.log("unexpected entry '" + s + "'");
+});
+}
+
+
+// Aufgabe Quotation marks in text
+let text = "Hello world, my name is Artem, and i will tell you about me: 'Now i live in Germany and learn JS'"
+
+let result = text.replace(/'([^']+)'/g, "\"$1\"");
+
+console.log(result)
+
+// Aufgabe Numbers again
+
+var number = /^[+-]?(\d+.(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/;
+
+// Tests:
+["1", "-1", "+15", "1.55", ".5", "5.", "1.3e2", "1E-4",
+ "1e+12"].forEach(function(s) {
+  if (!number.test(s))
+    console.log("Not found '" + s + "'");
+});
+["1a", "+-1", "1.2.3", "1+1", "1e4.5", ".5.", "1f5",
+ "."].forEach(function(s) {
+  if (number.test(s))
+    console.log("incorrectly accepted '" + s + "'");
+});
 
 
   
