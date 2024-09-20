@@ -1,0 +1,137 @@
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+
+    line-height: 1.6;
+    font-size: 15px;
+    color: 353535;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+                        /* Button */
+
+.btn {
+    display: inline-block;
+    padding: 5px 20px;
+    text-decoration: none;
+    background-color: 3FA2F6;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-color: white;
+}
+
+.btn-cards {
+    display: inline-block;
+    padding: 5px 20px;
+    text-decoration: none;
+    background-color: 3FA2F6;
+    color: white;
+    border-radius: 10px;
+    border-color: white;
+}
+
+                    /* Infos */
+
+.infos {
+    display: block;
+}
+
+.infos-none {
+    display: none;
+}
+
+                    /* Modal Window */
+
+.modal-hidden {
+    display: none;
+  }
+  
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.modal__content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+  
+.modal__content button {
+    margin-top: 10px;
+}
+
+                        /* Cards */
+
+
+
+.card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.card__container {
+    display: flex;
+}
+
+.card__text {
+    padding-bottom: 10px;
+}
+
+.card__show {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 2px lightskyblue solid;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+  
+.card__remove {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+                    /* SetInterval */
+
+.timer {
+    text-align: center;
+    width: 5%;
+    
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px lightskyblue solid;
+}
+
+.set__interval {
+    justify-content: center;
+}
+
+                        /* SetInterval */
+  
+.congratulation {
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px lightskyblue solid;
+}
+  

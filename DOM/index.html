@@ -1,0 +1,66 @@
+<!DOCKTYPE html>
+<html> 
+
+<head>
+    <meta charset=" UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM</title>
+    <link rel="stylesheet" href="../DOM/style.css">
+</head>
+
+<body>
+    <!-- Status -->
+    <div id="status">Status: Deactivate</div>
+    <button class="btn" id="toggleButton">Activate</button>
+
+    <!-- infos -->
+<div class="infos infos-none">
+
+    <!-- Messages -->
+    <div id="content"></div>
+
+    <!-- MyList -->
+    <ul id="elements"></ul>
+
+    <!-- Changing buttons  -->
+    <button class="btn" id="addElement">Add</button>
+    <button class="btn" id="deleteElement">Delete</button>
+    
+    <input class="input" type="text" id="colorInput" placeholder="Enter a color to change">
+    <button class="btn" id="changeColor">Change Color</button>
+
+    <!-- ModalWindow -->
+    <h4 class="someText">Here we gonna learn how to use a Modal Window</h4>
+
+    <button class="btn" id="openModal">Open the Modal Window</button>
+
+  <div id="modal" class="modal-hidden">
+    <div class="modal__content">
+            <button class="btn" id="addItem">Add</button>
+            <input type="text" id="modalInput" placeholder="Write something">
+            <button class="btn btn-close" id="closeModal">Close</button>
+      <ul id="modalList"></ul>
+    </div>
+  </div>
+
+    <!-- Cards -->
+  <h4 class="someText">Now we gonna learn how to make some animations cards.</h4>
+
+    <button class="btn" id="addCard">Add the Card</button>
+    <div class="card__container" id="cardContainer"></div>
+
+    <!-- SetInterval -->
+     <div class="set__interval">
+        <div class="timer" id="timer">10</div>
+        <button class="btn" id="startTimer">Start Timer</button>
+     </div>
+    
+    
+
+</div>     <!-- /Infos -->
+
+
+    <script src="../DOM/exercises.js"></script>
+</body>
+</html>
+
