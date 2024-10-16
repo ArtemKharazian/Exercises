@@ -1,0 +1,20 @@
+{
+  "title": "Welcome to My Simple Website",
+  "description": "This content is dynamically loaded from a JSON file.",
+  "sections": [
+    {
+      "header": "About Me",
+      "content": "I am Artem, developer and i'm building cool websites."
+    },
+    {
+      "header": "My Services",
+      "content": "I offer web development."
+    },
+    {
+      "header": "Contact",
+      "content": "Feel free to reach out to me at artem@example.com."
+    }
+  ]
+}
+
+  
